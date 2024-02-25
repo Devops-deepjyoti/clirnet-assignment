@@ -14,4 +14,5 @@ WORKDIR /var/www/html
 EXPOSE 80
 
 # Start the WordPress site
+ENTRYPOINT [ "./start.sh" ]
 CMD ["apache2-foreground"]
