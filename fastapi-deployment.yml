@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-fastapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-fastapi
+  template:
+    metadata:
+      labels:
+        app: my-fastapi
+    spec:
+      containers:
+        - name: my-fastapi-container
+          image: $(minikube ip):5000/my_fastapi_app:latest
+          ports:
+            - containerPort: 80
