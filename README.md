@@ -38,3 +38,18 @@ you can run this command samultaneusly to runa  SQL command but not in node
 ```sh
 docker run --name my-wordpress-db -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=wordpress -d mysql:latest
 ```
+ Run the WordPress container and link it to the MySQL container. Use the following command:
+ ```sh
+ docker run --name my-wordpress-site -p 8080:80 --link my-wordpress-db:mysql -d my-wordpress-image
+```
+Apply YAML files to Minikube: SQL and Wordpress 
+```sh
+kubectl apply -f mysql-deployment.yml
+kubectl apply -f wordpress-deployment.yml
+kubectl apply -f mysql-service.yml
+```
+Access WordPress using following command line :
+```sh
+minikube service wordpress-service
+```
+***Thanks***
